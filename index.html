@@ -1,0 +1,2389 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0d7c3f" />
+    <meta name="color-scheme" content="light" />
+    <title>Bakra Bazaar - Premium Goats for Bakrid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --primary: #0d7c3f;
+        --primary-dark: #064d29;
+        --primary-soft: #e6f4ec;
+        --accent: #d8a523;
+        --accent-soft: #fff2bf;
+        --ink: #161a16;
+        --muted: #647067;
+        --line: #e8e3d5;
+        --paper: #fffdf6;
+        --surface: #fff;
+        --wa: #25d366;
+        --danger: #c83232;
+        --shadow: 0 18px 50px rgba(40, 33, 12, 0.11);
+        --shadow-hover: 0 24px 70px rgba(13, 124, 63, 0.18);
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        overflow-x: hidden;
+        min-height: 100dvh;
+      }
+      body.urdu {
+        font-family: "Noto Nastaliq Urdu", serif;
+        direction: rtl;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: calc(12px + env(safe-area-inset-top)) 5% 12px;
+        background: rgba(255, 253, 246, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(232, 227, 213, 0.8);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary-dark);
+        font-weight: 800;
+        font-size: 1.35rem;
+      }
+      .logo-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: var(--primary);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 1.35rem;
+        box-shadow: 0 12px 26px rgba(13, 124, 63, 0.24);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        list-style: none;
+      }
+      .nav-link {
+        border: none;
+        background: transparent;
+        color: var(--ink);
+        font-weight: 650;
+        padding: 10px 12px;
+        border-radius: 10px;
+      }
+      .nav-link:hover {
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+      }
+      .admin-btn,
+      .lang-toggle {
+        border: none;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-weight: 750;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .admin-btn {
+        background: var(--primary);
+        color: #fff;
+      }
+      .admin-btn:hover {
+        background: var(--primary-dark);
+      }
+      .lang-toggle {
+        background: var(--accent-soft);
+        color: #5e4600;
+        border: 1px solid #f1d879;
+      }
+      .lang-icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: grid;
+        place-items: center;
+        color: #161a16;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 100px 5% 48px;
+        text-align: center;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(4, 38, 21, 0.97) 0%,
+            rgba(13, 124, 63, 0.88) 55%,
+            rgba(94, 70, 0, 0.35) 100%
+          ),
+          radial-gradient(
+            circle at 85% 20%,
+            rgba(245, 200, 78, 0.18),
+            transparent 45%
+          );
+        color: #fff;
+      }
+      .hero-inner {
+        width: 100%;
+        max-width: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+        font-weight: 800;
+        width: 100%;
+        max-width: none;
+        margin-inline: auto;
+      }
+      body.urdu .hero h1 {
+        line-height: 1.45;
+      }
+      .hero p {
+        width: 100%;
+        max-width: 42rem;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 0.98rem;
+        line-height: 1.65;
+        margin: 16px auto 22px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .cta-btn,
+      .ghost-btn {
+        border: none;
+        border-radius: 999px;
+        padding: 14px 24px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .cta-btn {
+        background: linear-gradient(135deg, var(--accent), #f5c84e);
+        color: #1e1b10;
+        box-shadow: 0 14px 34px rgba(216, 165, 35, 0.32);
+      }
+      .cta-btn:hover,
+      .ghost-btn:hover {
+        transform: translateY(-2px);
+      }
+      .ghost-btn {
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #fff;
+      }
+
+      .section {
+        padding: 72px 5%;
+      }
+      .section-alt {
+        background: #f7f2e5;
+      }
+      .section-head {
+        max-width: 820px;
+        margin: 0 auto 32px;
+        text-align: center;
+      }
+      .section-head h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        line-height: 1.15;
+        color: var(--primary-dark);
+        font-weight: 800;
+      }
+      .section-head p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin-top: 10px;
+      }
+
+      .control-panel {
+        max-width: 1260px;
+        margin: 0 auto 26px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        border-radius: 18px;
+        padding: 18px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr auto;
+        gap: 14px;
+        align-items: end;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .field label {
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 13px;
+        background: #fff;
+        color: var(--ink);
+        outline: none;
+      }
+      .field textarea {
+        min-height: 86px;
+        resize: vertical;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(13, 124, 63, 0.1);
+      }
+      .reset-btn {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 800;
+        background: var(--accent-soft);
+        color: #5e4600;
+      }
+      .reset-btn:hover {
+        background: #f6dc78;
+      }
+
+      .breed-chips {
+        max-width: 1120px;
+        margin: 0 auto 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-weight: 750;
+        color: #475148;
+      }
+      .chip:hover {
+        border-color: var(--accent);
+        transform: translateY(-1px);
+      }
+      .chip.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+        box-shadow: 0 12px 28px rgba(13, 124, 63, 0.23);
+      }
+
+      .goats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 24px;
+        max-width: 1260px;
+        margin: 0 auto;
+      }
+      .goat-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: 0.28s ease;
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      .goat-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .goat-card:hover {
+        transform: translateY(-7px);
+        box-shadow: var(--shadow-hover);
+      }
+      .goat-image {
+        position: relative;
+        height: 260px;
+        overflow: hidden;
+        background: #0a2414;
+      }
+      .goat-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 22px;
+        max-width: 1260px;
+        margin: 0 auto 36px;
+      }
+      .video-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .video-card video {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        background: #0a2414;
+        display: block;
+      }
+      .video-card figcaption {
+        padding: 14px 16px;
+        font-weight: 700;
+        color: var(--primary-dark);
+        text-align: center;
+      }
+      .eid-notice {
+        max-width: 960px;
+        margin: 18px auto 0;
+        background: var(--accent-soft);
+        border: 1px solid #edd071;
+        border-radius: 14px;
+        padding: 16px 20px;
+        text-align: center;
+        color: #4d3b05;
+        font-weight: 650;
+        line-height: 1.65;
+      }
+      .service-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 12px;
+        opacity: 0;
+        transform: translateY(18px);
+        transition: 0.28s ease;
+      }
+      .service-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .service-card h3 {
+        color: var(--primary-dark);
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+      .service-dates {
+        display: inline-flex;
+        align-self: start;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .service-note {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 0.92rem;
+      }
+      body.urdu .service-note,
+      body.urdu .hero h1 {
+        white-space: pre-line;
+      }
+      .service-fee {
+        font-size: 1.35rem;
+        font-weight: 850;
+        color: var(--primary);
+      }
+      .contact-people {
+        display: grid;
+        gap: 16px;
+        max-width: 640px;
+        margin: 26px auto 0;
+      }
+      .contact-person {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .contact-person h3 {
+        font-size: 1.05rem;
+        font-weight: 750;
+        margin-bottom: 10px;
+        line-height: 1.45;
+      }
+      .contact-person .wa-number {
+        margin: 0 0 12px;
+        font-size: 1.45rem;
+      }
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      .contact-actions a {
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-weight: 800;
+        font-size: 0.88rem;
+      }
+      .contact-call {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #fff;
+      }
+      .badge,
+      .breed-tag {
+        position: absolute;
+        top: 14px;
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .badge {
+        left: 14px;
+        background: var(--accent);
+        color: #1e1b10;
+      }
+      .breed-tag {
+        right: 14px;
+        background: rgba(6, 77, 41, 0.92);
+        color: #fff;
+      }
+      body.urdu .badge {
+        left: auto;
+        right: 14px;
+      }
+      body.urdu .breed-tag {
+        right: auto;
+        left: 14px;
+      }
+      .goat-info {
+        padding: 20px;
+      }
+      .goat-name {
+        font-size: 1.25rem;
+        color: var(--primary-dark);
+        font-weight: 800;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin: 8px 0 14px;
+      }
+      .base-price {
+        font-size: 1.42rem;
+        font-weight: 850;
+        color: var(--primary);
+        margin-bottom: 16px;
+      }
+      .service-options {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .service-option {
+        border: 1px solid var(--line);
+        background: #fbf8ed;
+        border-radius: 13px;
+        padding: 11px 12px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+      .service-option:hover {
+        border-color: var(--accent);
+      }
+      .service-option.active {
+        border-color: var(--primary);
+        background: var(--primary-soft);
+      }
+      .service-label {
+        font-weight: 700;
+        font-size: 0.88rem;
+      }
+      .service-price {
+        color: var(--primary-dark);
+        font-weight: 800;
+        font-size: 0.88rem;
+      }
+      .total-row {
+        background: var(--primary-dark);
+        color: #fff;
+        border-radius: 14px;
+        padding: 13px 14px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .total-row small {
+        opacity: 0.8;
+        font-size: 0.74rem;
+        display: block;
+      }
+      .total-row strong {
+        font-size: 1.12rem;
+      }
+      .wa-btn {
+        width: 100%;
+        border: none;
+        border-radius: 13px;
+        padding: 13px;
+        background: var(--wa);
+        color: #fff;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+      }
+      .wa-btn:hover {
+        background: #1fbd59;
+        transform: translateY(-1px);
+      }
+      .empty-state {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 58px 20px;
+        color: var(--muted);
+        background: #fff;
+        border: 1px dashed var(--line);
+        border-radius: 18px;
+      }
+
+      .tracking-layout {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(280px, 420px) 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+      .panel h3 {
+        color: var(--primary-dark);
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+      }
+      .track-result {
+        min-height: 210px;
+      }
+      .order-card {
+        display: grid;
+        gap: 14px;
+      }
+      .order-top {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .order-top img {
+        width: 84px;
+        height: 84px;
+        border-radius: 16px;
+        object-fit: cover;
+        background: #eef1ec;
+      }
+      .order-id {
+        font-weight: 850;
+        color: var(--primary-dark);
+      }
+      .status-pill {
+        display: inline-flex;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        padding: 7px 12px;
+        font-weight: 850;
+        font-size: 0.84rem;
+      }
+      .timeline {
+        display: grid;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .timeline-item {
+        border-left: 3px solid var(--primary);
+        padding-left: 12px;
+        color: #4f594f;
+      }
+      body.urdu .timeline-item {
+        border-left: 0;
+        border-right: 3px solid var(--primary);
+        padding-left: 0;
+        padding-right: 12px;
+      }
+      .timeline-item b {
+        display: block;
+        color: var(--ink);
+      }
+      .track-steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin: 4px 0 12px;
+      }
+      .track-step {
+        height: 8px;
+        border-radius: 999px;
+        background: #e7e1d2;
+      }
+      .track-step.done {
+        background: var(--primary);
+      }
+      .confirm-box {
+        background: var(--accent-soft);
+        border: 1px solid #edd071;
+        border-radius: 14px;
+        padding: 13px;
+        color: #4d3b05;
+      }
+      .confirm-box a {
+        margin-top: 10px;
+      }
+      .message {
+        margin-top: 12px;
+        padding: 11px 13px;
+        border-radius: 12px;
+        font-weight: 750;
+        display: none;
+      }
+      .message.show {
+        display: block;
+      }
+      .message.ok {
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+      }
+      .message.err {
+        background: #ffe8e8;
+        color: #9a1d1d;
+      }
+
+      .contact-section {
+        background: var(--primary-dark);
+        color: #fff;
+        text-align: center;
+        padding: 72px 5%;
+      }
+      .contact-section p {
+        color: rgba(255, 255, 255, 0.78);
+        margin-top: 8px;
+      }
+      .contact-card {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .wa-number {
+        font-size: 1.65rem;
+        font-weight: 850;
+        color: #f5c84e;
+        margin: 8px 0 18px;
+      }
+      footer {
+        background: #111;
+        color: rgba(255, 255, 255, 0.68);
+        text-align: center;
+        padding: 24px;
+        font-size: 0.88rem;
+      }
+      .float-wa {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: var(--wa);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 1.55rem;
+        z-index: 40;
+        box-shadow: 0 14px 35px rgba(37, 211, 102, 0.42);
+      }
+      body.urdu .float-wa {
+        right: auto;
+        left: 24px;
+      }
+      .keep-en,
+      .wa-number,
+      .contact-person h3,
+      .contact-person .contact-actions a[href^="tel:"] {
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      body.urdu .wa-number,
+      body.urdu .keep-en {
+        text-align: left;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: rgba(0, 0, 0, 0.62);
+        backdrop-filter: blur(7px);
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modal-box {
+        width: 100%;
+        max-width: 920px;
+        max-height: 90vh;
+        overflow: auto;
+        background: #fff;
+        border-radius: 22px;
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
+        padding: 26px;
+        position: relative;
+      }
+      .modal-box.small {
+        max-width: 470px;
+      }
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: #f2efe5;
+        font-size: 1.2rem;
+      }
+      body.urdu .modal-close {
+        right: auto;
+        left: 14px;
+      }
+      .modal-close:hover {
+        background: #ffe0e0;
+        color: var(--danger);
+      }
+      .modal-title {
+        color: var(--primary-dark);
+        font-size: 1.55rem;
+        font-weight: 850;
+        margin-bottom: 6px;
+      }
+      .modal-sub {
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .form-grid .wide {
+        grid-column: 1/-1;
+      }
+      .submit-btn,
+      .secondary-btn,
+      .danger-btn {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 15px;
+        font-weight: 850;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .submit-btn {
+        background: var(--primary);
+        color: #fff;
+      }
+      .submit-btn:hover {
+        background: var(--primary-dark);
+      }
+      .secondary-btn {
+        background: #f2efe5;
+        color: #4c4636;
+      }
+      .danger-btn {
+        background: #ffe7e7;
+        color: var(--danger);
+      }
+
+      .admin-shell {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 20px;
+      }
+      .admin-tabs {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+      }
+      .tab-btn {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 12px;
+        padding: 12px 14px;
+        text-align: left;
+        font-weight: 800;
+        color: #4d574f;
+      }
+      body.urdu .tab-btn {
+        text-align: right;
+      }
+      .tab-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .stat-card {
+        background: #fbf8ed;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .stat-card strong {
+        display: block;
+        color: var(--primary-dark);
+        font-size: 1.45rem;
+      }
+      .admin-list {
+        display: grid;
+        gap: 12px;
+      }
+      .admin-goat,
+      .admin-order {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        background: #fff;
+      }
+      .admin-goat {
+        display: grid;
+        grid-template-columns: 95px 1fr;
+        gap: 14px;
+      }
+      .admin-goat img {
+        width: 95px;
+        height: 95px;
+        border-radius: 14px;
+        object-fit: cover;
+        background: #eef1ec;
+      }
+      .upload-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: end;
+        margin-top: 10px;
+      }
+      .file-input {
+        border: 1px dashed #d3c9ac !important;
+        background: #fffcf3 !important;
+      }
+      .breed-manager {
+        display: grid;
+        gap: 12px;
+      }
+      .breed-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 12px;
+        background: #fff;
+      }
+      .admin-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .inline-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .admin-order-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 900px) {
+        nav {
+          padding: calc(10px + env(safe-area-inset-top)) 4% 10px;
+        }
+        .nav-links li:nth-child(-n + 3) {
+          display: none;
+        }
+        .control-panel {
+          grid-template-columns: 1fr 1fr;
+        }
+        .admin-shell {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          min-height: 100svh;
+          background-position: center;
+        }
+        .admin-tabs {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .logo {
+          font-size: 1.05rem;
+        }
+        .logo span:last-child {
+          display: inline;
+        }
+        .logo-mark {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+        }
+        .nav-links {
+          gap: 7px;
+        }
+        .admin-btn,
+        .lang-toggle {
+          min-height: 44px;
+          padding: 9px 11px;
+        }
+        .admin-btn span:last-child {
+          display: none;
+        }
+        .hero {
+          padding: 96px 5% 36px;
+          background:
+            linear-gradient(
+              180deg,
+              rgba(4, 38, 21, 0.92) 0%,
+              rgba(4, 38, 21, 0.72) 62%,
+              rgba(4, 38, 21, 0.55) 100%
+            ),
+            url("https://images.unsplash.com/photo-1533318087102-b3ad366ed041?auto=format&fit=crop&w=1000&q=80")
+              center/cover no-repeat;
+        }
+        .hero h1 {
+          font-size: clamp(2.1rem, 12vw, 3.3rem);
+          line-height: 1.08;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .section {
+          padding: 52px 4%;
+        }
+        .goats-grid {
+          gap: 16px;
+        }
+        .goat-image {
+          height: 220px;
+        }
+        .service-option {
+          min-height: 54px;
+        }
+        .total-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .float-wa {
+          right: 18px;
+          bottom: calc(18px + env(safe-area-inset-bottom));
+          width: 54px;
+          height: 54px;
+        }
+        .control-panel,
+        .form-grid,
+        .inline-grid {
+          grid-template-columns: 1fr;
+        }
+        .track-steps {
+          grid-template-columns: repeat(5, 1fr);
+        }
+        .order-top {
+          align-items: flex-start;
+        }
+        .modal {
+          align-items: flex-end;
+          padding: 0;
+        }
+        .modal-box {
+          max-height: 92svh;
+          border-radius: 22px 22px 0 0;
+          padding: 24px 18px calc(22px + env(safe-area-inset-bottom));
+        }
+        .admin-goat {
+          grid-template-columns: 1fr;
+        }
+        .admin-goat img {
+          width: 100%;
+          height: 190px;
+        }
+        .upload-row {
+          grid-template-columns: 1fr;
+        }
+        .admin-tabs {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-actions {
+          display: grid;
+        }
+      }
+      @media (max-width: 390px) {
+        .logo span:last-child {
+          display: none;
+        }
+        .cta-btn,
+        .ghost-btn,
+        .submit-btn,
+        .secondary-btn,
+        .danger-btn {
+          width: 100%;
+        }
+        .admin-tabs {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="logo" href="#home" aria-label="Bakra Bazaar home"
+        ><span class="logo-mark">🐐</span
+        ><span class="t" data-en="Bakra Bazaar" data-ur="بکرا بازار"
+          >Bakra Bazaar</span
+        ></a
+      >
+      <ul class="nav-links">
+        <li>
+          <button
+            class="nav-link t"
+            data-en="Services"
+            data-ur="سروسز"
+            onclick="scrollToId('services')"
+          >
+            Services
+          </button>
+        </li>
+        <li>
+          <button
+            class="nav-link t"
+            data-en="Videos"
+            data-ur="ویڈیوز"
+            onclick="scrollToId('videos')"
+          >
+            Videos
+          </button>
+        </li>
+        <li>
+          <button
+            class="nav-link t"
+            data-en="Contact"
+            data-ur="رابطہ"
+            onclick="scrollToId('contact')"
+          >
+            Contact
+          </button>
+        </li>
+        <li>
+          <button class="admin-btn" onclick="openAdminLogin()">
+            <span>🔐</span
+            ><span class="t" data-en="Seller Login" data-ur="سیلر لاگ ان"
+              >Seller Login</span
+            >
+          </button>
+        </li>
+        <li>
+          <button class="lang-toggle" onclick="toggleLang()">
+            <span class="lang-icon" id="langIcon">اُ</span
+            ><span id="langText">اردو</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div
+          class="hero-badge t"
+          data-en="🌙 Eid ul Adha premium livestock"
+          data-ur="🌙 عید الاضحیٰ کے بہترین جانور"
+        >
+          🌙 Eid ul Adha premium livestock
+        </div>
+        <h1
+          class="t"
+          data-en="Quality healthy male goats (bucks) for Eid ul Adha — door delivery from Munireddy Palya, JC Nagar upto 25 kms."
+          data-ur="عید الاضحیٰ کے لیے معیاری صحت مند نر بکرے (مرد بکرا) — Munireddy Palya, JC Nagar سے 25 کلومیٹر تک گھر ڈیلیوری"
+        >
+          Quality healthy male goats (bucks) for Eid ul Adha — door delivery from
+          Munireddy Palya, JC Nagar upto 25 kms.
+        </h1>
+        <p
+          class="t"
+          data-en="We only provide quality healthy male goats / bucks (mard bakra) — never females. Choose a service below, then contact us to confirm weight, price, and timing."
+          data-ur="ہم صرف صحت مند نر بکرے (مرد بکرا) فراہم کرتے ہیں — مادہ نہیں۔ نیچے سروس چنیں، پھر وزن، قیمت اور وقت کی تصدیق کے لیے رابطہ کریں۔"
+        >
+          We only provide quality healthy male goats / bucks (mard bakra) — never
+          females. Choose a service below, then contact us to confirm weight,
+          price, and timing.
+        </p>
+        <div class="hero-actions">
+          <button
+            class="cta-btn t"
+            data-en="View Services"
+            data-ur="سروسز دیکھیں"
+            onclick="scrollToId('services')"
+          >
+            View Services
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="section section-alt" id="services">
+        <div class="section-head">
+          <h2
+            class="t"
+            data-en="Three Ways to Book"
+            data-ur="بکنگ کے تین طریقے"
+          >
+            Three Ways to Book
+          </h2>
+          <p
+            class="t"
+            data-en="Pick the option that fits your qurbani plan."
+            data-ur="اپنی قربانی کے مطابق آپشن چنیں۔"
+          >
+            Pick the option that fits your qurbani plan.
+          </p>
+        </div>
+
+        <div class="goats-grid" id="servicesGrid"></div>
+      </section>
+
+      <section class="section" id="videos">
+        <div class="section-head">
+          <h2
+            class="t"
+            data-en="See Our Bakras"
+            data-ur="ہمارے بکرے دیکھیں"
+          >
+            See Our Bakras
+          </h2>
+          <p
+            class="t"
+            data-en="Short clips of our healthy male goats before you choose."
+            data-ur="انتخاب سے پہلے ہمارے صحت مند نر بکروں کی مختصر ویڈیوز۔"
+          >
+            Short clips of our healthy male goats before you choose.
+          </p>
+        </div>
+        <div class="videos-grid">
+          <figure class="video-card">
+            <video controls playsinline preload="metadata" src="/videos/bakra-1.mp4"></video>
+            <figcaption class="t" data-en="Bakra 1" data-ur="بکرا ۱">Bakra 1</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="metadata" src="/videos/bakra-2.mp4"></video>
+            <figcaption class="t" data-en="Bakra 2" data-ur="بکرا ۲">Bakra 2</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="metadata" src="/videos/bakra-3.mp4"></video>
+            <figcaption class="t" data-en="Bakra 3" data-ur="بکرا ۳">Bakra 3</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <h2
+          class="t"
+          data-en="Contact to Complete Your Order"
+          data-ur="آرڈر مکمل کرنے کے لیے رابطہ کریں"
+        >
+          Contact to Complete Your Order
+        </h2>
+        <p
+          class="t"
+          data-en="Every purchase is confirmed here. Call or WhatsApp with your chosen service, goat, weight (kg), and address."
+          data-ur="ہر خریداری یہاں تصدیق ہوتی ہے۔ اپنی سروس، بکرا، وزن (کلو)، اور پتہ بتائیں۔"
+        >
+          Every purchase is confirmed here. Call or WhatsApp with your chosen
+          service, goat, weight (kg), and address.
+        </p>
+        <div class="contact-people" id="contactPeople"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p
+        class="t"
+        data-en="© 2026 Bakra Bazaar. All rights reserved."
+        data-ur="© 2026 بکرا بازار۔ جملہ حقوق محفوظ۔"
+      >
+        © 2026 Bakra Bazaar. All rights reserved.
+      </p>
+    </footer>
+
+    <a
+      class="float-wa"
+      id="floatWa"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+      >💬</a
+    >
+
+    <div class="modal" id="bookingModal">
+      <div class="modal-box small">
+        <button class="modal-close" onclick="closeModal('bookingModal')">
+          ×
+        </button>
+        <h2
+          class="modal-title t"
+          data-en="Complete Your Booking"
+          data-ur="اپنی بکنگ مکمل کریں"
+        >
+          Complete Your Booking
+        </h2>
+        <p class="modal-sub" id="bookingSummary"></p>
+        <div class="form-grid">
+          <div class="field wide">
+            <label class="t" data-en="Full Name" data-ur="پورا نام"
+              >Full Name</label
+            >
+            <input id="customerName" autocomplete="name" />
+          </div>
+          <div class="field wide">
+            <label class="t" data-en="Phone Number" data-ur="فون نمبر"
+              >Phone Number</label
+            >
+            <input
+              id="customerPhone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+            />
+          </div>
+          <div class="field wide">
+            <label class="t" data-en="Delivery Address" data-ur="ڈیلیوری پتہ"
+              >Delivery Address</label
+            >
+            <textarea id="customerAddress"></textarea>
+          </div>
+          <div class="field wide">
+            <label class="t" data-en="Notes" data-ur="نوٹس">Notes</label>
+            <textarea id="customerNotes"></textarea>
+          </div>
+        </div>
+        <button
+          class="submit-btn"
+          style="width: 100%; margin-top: 16px"
+          onclick="submitBooking()"
+        >
+          <span>✅</span
+          ><span class="t" data-en="Place Order" data-ur="آرڈر دیں"
+            >Place Order</span
+          >
+        </button>
+        <p class="modal-sub" style="margin-top: 12px; margin-bottom: 0">
+          <span
+            class="t"
+            data-en="After placing the order, send the WhatsApp message to confirm with Bakra Bazaar."
+            data-ur="آرڈر دینے کے بعد بکرا بازار سے تصدیق کے لیے واٹس ایپ میسج بھیجیں۔"
+            >After placing the order, send the WhatsApp message to confirm with
+            Bakra Bazaar.</span
+          >
+        </p>
+        <a
+          class="secondary-btn hidden"
+          id="bookingWaBtn"
+          target="_blank"
+          rel="noopener"
+          style="width: 100%; margin-top: 12px"
+          >💬 Send Order on WhatsApp</a
+        >
+        <div class="message" id="bookingMsg"></div>
+      </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+      <div class="modal-box small">
+        <button class="modal-close" onclick="closeModal('loginModal')">
+          ×
+        </button>
+        <h2 class="modal-title t" data-en="Seller Login" data-ur="سیلر لاگ ان">
+          Seller Login
+        </h2>
+        <p
+          class="modal-sub t"
+          data-en="Authenticated backend access for inventory and orders."
+          data-ur="انوینٹری اور آرڈرز کے لیے محفوظ بیک اینڈ رسائی۔"
+        >
+          Authenticated backend access for inventory and orders.
+        </p>
+        <div class="field">
+          <label class="t" data-en="Username" data-ur="یوزر نیم"
+            >Username</label
+          >
+          <input id="adminUser" autocomplete="username" />
+        </div>
+        <div class="field" style="margin-top: 12px">
+          <label class="t" data-en="Password" data-ur="پاس ورڈ">Password</label>
+          <input
+            type="password"
+            id="adminPass"
+            autocomplete="current-password"
+          />
+        </div>
+        <button
+          class="submit-btn"
+          style="width: 100%; margin-top: 16px"
+          onclick="adminLogin()"
+        >
+          <span>🔐</span
+          ><span class="t" data-en="Login" data-ur="لاگ ان">Login</span>
+        </button>
+        <div class="message" id="loginMsg"></div>
+      </div>
+    </div>
+
+    <div class="modal" id="adminModal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('adminModal')">
+          ×
+        </button>
+        <h2
+          class="modal-title t"
+          data-en="Admin Dashboard"
+          data-ur="ایڈمن ڈیش بورڈ"
+        >
+          Admin Dashboard
+        </h2>
+        <p
+          class="modal-sub t"
+          data-en="Manage goat inventory, pricing, images, and order tracking."
+          data-ur="بکروں کی انوینٹری، قیمت، تصاویر، اور آرڈر ٹریکنگ سنبھالیں۔"
+        >
+          Manage goat inventory, pricing, images, and order tracking.
+        </p>
+
+        <div class="admin-shell">
+          <div class="admin-tabs">
+            <button
+              class="tab-btn active"
+              id="tab-inventory"
+              onclick="switchAdminTab('inventory')"
+            >
+              🐐 Inventory
+            </button>
+            <button
+              class="tab-btn"
+              id="tab-orders"
+              onclick="switchAdminTab('orders')"
+            >
+              📦 Orders
+            </button>
+            <button
+              class="tab-btn"
+              id="tab-breeds"
+              onclick="switchAdminTab('breeds')"
+            >
+              🏷 Breeds
+            </button>
+            <button
+              class="tab-btn"
+              id="tab-add"
+              onclick="switchAdminTab('add')"
+            >
+              ➕ Add Goat
+            </button>
+            <button class="tab-btn" onclick="adminLogout()">↩ Logout</button>
+          </div>
+
+          <div>
+            <div class="stat-grid" id="adminStats"></div>
+
+            <section id="admin-inventory">
+              <div class="admin-list" id="adminInventory"></div>
+            </section>
+
+            <section id="admin-orders" class="hidden">
+              <div class="admin-list" id="adminOrders"></div>
+            </section>
+
+            <section id="admin-breeds" class="hidden">
+              <div class="panel" style="box-shadow: none">
+                <h3 class="t" data-en="Manage Breeds" data-ur="نسلیں سنبھالیں">
+                  Manage Breeds
+                </h3>
+                <div class="inline-grid">
+                  <div class="field">
+                    <label>New Breed</label>
+                    <input id="newBreedName" placeholder="e.g. Osmanabadi" />
+                  </div>
+                  <button class="submit-btn" onclick="addBreed()">
+                    🏷 Add Breed
+                  </button>
+                </div>
+                <div class="message" id="breedMsg"></div>
+                <div
+                  class="breed-manager"
+                  id="adminBreeds"
+                  style="margin-top: 16px"
+                ></div>
+              </div>
+            </section>
+
+            <section id="admin-add" class="hidden">
+              <div class="panel" style="box-shadow: none">
+                <h3
+                  class="t"
+                  data-en="Add New Goat"
+                  data-ur="نیا بکرا شامل کریں"
+                >
+                  Add New Goat
+                </h3>
+                <div class="form-grid" style="margin-top: 14px">
+                  <div class="field">
+                    <label>Name English</label>
+                    <input id="newName" />
+                  </div>
+                  <div class="field">
+                    <label>Name Urdu</label>
+                    <input id="newNameUr" />
+                  </div>
+                  <div class="field">
+                    <label>Breed</label>
+                    <select id="newBreed"></select>
+                  </div>
+                  <div class="field">
+                    <label>Price</label>
+                    <input type="number" id="newPrice" inputmode="numeric" />
+                  </div>
+                  <div class="field">
+                    <label>Weight</label>
+                    <input id="newWeight" />
+                  </div>
+                  <div class="field wide">
+                    <label>Image from Gallery</label>
+                    <input
+                      class="file-input"
+                      type="file"
+                      id="newImageFile"
+                      accept="image/*"
+                    />
+                  </div>
+                  <div class="field wide">
+                    <label>Image URL fallback</label>
+                    <input id="newImg" />
+                  </div>
+                  <div class="field wide">
+                    <label>Badge</label>
+                    <input id="newBadge" />
+                  </div>
+                </div>
+                <button
+                  class="submit-btn"
+                  style="margin-top: 14px"
+                  onclick="addGoat()"
+                >
+                  ➕ Add Goat
+                </button>
+                <div class="message" id="addMsg"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API = "";
+      const BUILTIN_SERVICES = [
+        {
+          id: "alive",
+          en: "Delivered Alive to Home",
+          ur: "زندہ گھر پر ڈیلیور",
+          extra: 0,
+          flat_fee: null,
+          available: "15–27 May",
+          note_en:
+            "Open 15–27 May only. Tell us how many kg goat you want; delivery fee is charged separately. Door delivery within 25 km of Munireddy Palya, JC Nagar.",
+          note_ur:
+            "صرف 15 تا 27 مئی کھلا۔ بتا دیں آپ کتنے کلو کا بکرا چاہتے ہیں؛ ڈیلیوری فیس الگ وصول ہوگی۔ Munireddy Palya,\nJC Nagar سے 25 کلومیٹر کے اندر گھر ڈیلیوری۔",
+        },
+        {
+          id: "cut",
+          en: "Cut & Delivered to Home",
+          ur: "ذبح کر کے گھر ڈیلیور",
+          extra: 26500,
+          flat_fee: 26500,
+          available: "Eid 28–30 May",
+          note_en:
+            "Fixed price ₹26,500 — not per kg. Minimum 18 kg meat guaranteed on all three Eid days (28–30 May 2026). Free door delivery within 25 km of Munireddy Palya, JC Nagar.",
+          note_ur:
+            "مقررہ قیمت ₹26,500 — فی کلو نہیں۔ عید کے تینوں دنوں (28–30 مئی 2026) کم از کم 18 کلو گوشت کی ضمانت۔ Munireddy Palya,\nJC Nagar سے 25 کلومیٹر کے اندر مفت گھر ڈیلیوری۔",
+        },
+        {
+          id: "poor",
+          en: "Cut & Distributed to Poor",
+          ur: "ذبح کر کے غریبوں میں تقسیم",
+          extra: 26500,
+          flat_fee: 26500,
+          available: "Eid 28–30 May",
+          note_en:
+            "Fixed price ₹26,500 — not per kg. Minimum 18 kg meat guaranteed on all three Eid days (28–30 May 2026). Cut and distributed to the poor.",
+          note_ur:
+            "مقررہ قیمت ₹26,500 — فی کلو نہیں۔ عید کے تینوں دنوں (28–30 مئی 2026) کم از کم 18 کلو گوشت کی تقسیم کی ضمانت۔ ذبح کر کے غریبوں میں تقسیم۔",
+        },
+      ];
+      const CONTACTS = [
+        {
+          name: "Maulana Munavvar Husain Rashadi",
+          phone: "9986764178",
+          wa: "919986764178",
+        },
+        {
+          name: "Hafiz Riyaz Maseehi",
+          phone: "9980606870",
+          wa: "919980606870",
+        },
+      ];
+      const fallbackImg =
+        "https://placehold.co/800x520/0d7c3f/fff?text=Bakra+Bazaar";
+
+      let goats = [];
+      let breeds = [];
+      let services = [];
+      let orders = [];
+      let currentLang = "en";
+      let pendingPurchase = null;
+      let pendingBooking = null;
+      let orderStatuses = [];
+
+      const $ = (id) => document.getElementById(id);
+      const fmt = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
+      const esc = (value) =>
+        String(value ?? "").replace(
+          /[&<>"']/g,
+          (ch) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[ch],
+        );
+      const jsArg = (value) => esc(JSON.stringify(String(value ?? "")));
+      const waUrlFor = (phone, text) =>
+        `https://wa.me/${phone}?text=${encodeURIComponent(text || "Assalamu alaikum, I want to enquire about Bakra Bazaar.")}`;
+      const formatPhone = (phone) =>
+        String(phone).replace(/(\d{5})(\d{5})/, "$1 $2");
+      const serviceLabel = (service) =>
+        currentLang === "ur"
+          ? service?.ur || service?.en || ""
+          : service?.en || service?.ur || "";
+      const serviceNote = (service) =>
+        currentLang === "ur"
+          ? service?.note_ur || service?.note_en || ""
+          : service?.note_en || service?.note_ur || "";
+
+      const serviceNoteHtml = (note) => {
+        if (currentLang !== "ur") return esc(note);
+        return esc(
+          note.replace(/Munireddy Palya,\s*JC Nagar/g, "Munireddy Palya,\nJC Nagar"),
+        );
+      };
+
+      function calculateTotal(goat, service) {
+        if (!service) return 0;
+        if (service.flat_fee != null) return Number(service.flat_fee);
+        return Number(goat?.price || 0) + Number(service.extra || 0);
+      }
+
+      function servicePriceHint(service, goat) {
+        if (!service) return "";
+        if (service.id === "alive") {
+          return goat
+            ? fmt(goat.price) + (currentLang === "ur" ? " + ڈیلیوری الگ" : " + delivery extra")
+            : currentLang === "ur"
+              ? "قیمت وزن کے مطابق"
+              : "Price by kg";
+        }
+        if (service.id === "cut" || service.id === "poor") {
+          return fmt(service.flat_fee || 26500);
+        }
+        return goat
+          ? fmt(goat.price)
+          : currentLang === "ur"
+            ? "رابطہ پر طے"
+            : "Confirm on call";
+      }
+
+      function totalRowLabel(service) {
+        if (service?.id === "alive") {
+          return currentLang === "ur" ? "بکرے کی قیمت" : "Goat price";
+        }
+        if (service?.id === "cut" || service?.id === "poor") {
+          return currentLang === "ur" ? "مقررہ قیمت" : "Fixed price";
+        }
+        return currentLang === "ur" ? "تخمینہ" : "Estimate";
+      }
+
+      function purchaseWhatsAppText(purchase) {
+        if (!purchase?.service) {
+          return "Assalamu alaikum, I want to enquire about Bakra Bazaar.";
+        }
+        const service = purchase.service;
+        const goat = purchase.goat;
+        const lines = [
+          "Assalamu alaikum, I want to book with Bakra Bazaar.",
+          `Service: ${service.en}`,
+          `Dates: ${service.available || ""}`,
+        ];
+        if (goat) {
+          lines.push(
+            `Goat: ${goat.name_en}`,
+            `Breed: ${goat.breed || ""}`,
+            `Weight: ${goat.weight || ""}`,
+            `Listed price: ${fmt(goat.price)}`,
+          );
+        }
+        if (service.id === "alive") {
+          lines.push(
+            "Please confirm kg and final goat price.",
+            "Delivery fee will be charged separately.",
+            "Address (within 25 km Munireddy Palya, JC Nagar):",
+          );
+        } else if (service.id === "cut") {
+          lines.push(
+            "Fixed service price: ₹26,500 (not per kg).",
+            "Minimum 18 kg meat guaranteed on all three Eid days (28–30 May 2026).",
+            "Free door delivery within 25 km Munireddy Palya, JC Nagar.",
+            "My address:",
+          );
+        } else if (service.id === "poor") {
+          lines.push(
+            "Fixed service price: ₹26,500 (not per kg).",
+            "Minimum 18 kg meat guaranteed on all three Eid days (28–30 May 2026).",
+            "Cut and distributed to the poor.",
+          );
+        }
+        lines.push("My name:", "My phone:");
+        return lines.join("\n");
+      }
+
+      function orderWhatsAppText(order) {
+        return [
+          "New Bakra Bazaar order confirmation",
+          `Order ID: ${order.order_id}`,
+          `Goat: ${order.goat_name}`,
+          `Breed: ${order.goat_breed || ""}`,
+          `Service: ${order.service?.en || ""}`,
+          `Total: ${fmt(order.total_price)}`,
+          `Customer: ${order.customer_name}`,
+          `Phone: ${order.phone}`,
+          `Address: ${order.address || ""}`,
+          `Notes: ${order.notes || ""}`,
+        ].join("\n");
+      }
+
+      function scrollToId(id) {
+        $(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      async function api(path, options = {}) {
+        const isForm = options.body instanceof FormData;
+        const res = await fetch(API + path, {
+          credentials: "same-origin",
+          headers: isForm
+            ? options.headers || {}
+            : {
+                "Content-Type": "application/json",
+                ...(options.headers || {}),
+              },
+          ...options,
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Request failed");
+        return data;
+      }
+
+      async function uploadImage(inputId) {
+        const input = $(inputId);
+        if (!input || !input.files || !input.files[0]) return "";
+        const form = new FormData();
+        form.append("image", input.files[0]);
+        const data = await api("/api/admin/uploads", {
+          method: "POST",
+          body: form,
+        });
+        input.value = "";
+        return data.url;
+      }
+
+      function showMessage(id, type, text) {
+        const el = $(id);
+        el.className = `message show ${type}`;
+        el.textContent = text;
+      }
+
+      function clearMessage(id) {
+        const el = $(id);
+        el.className = "message";
+        el.textContent = "";
+      }
+
+      async function loadStorefront() {
+        try {
+          const data = await api("/api/goats");
+          goats = data.goats || [];
+          breeds =
+            data.breeds ||
+            Array.from(
+              new Set(goats.map((g) => g.breed).filter(Boolean)),
+            ).sort();
+          services = data.services || BUILTIN_SERVICES;
+        } catch {
+          try {
+            const res = await fetch("/data/store.json");
+            const store = await res.json();
+            goats = store.goats || [];
+            breeds = store.breeds || [];
+          } catch {
+            goats = [];
+            breeds = [];
+          }
+          services = BUILTIN_SERVICES;
+        }
+        renderBreedOptions();
+        renderServices();
+        renderContactPeople();
+      }
+
+      function renderBreedOptions() {
+        const select = $("newBreed");
+        if (!select) return;
+        select.innerHTML = breeds
+          .map((b) => `<option value="${esc(b)}">${esc(b)}</option>`)
+          .join("");
+      }
+
+      function renderServices() {
+        const grid = $("servicesGrid");
+        if (!grid || !services.length) return;
+        grid.innerHTML = services
+          .map((s) => {
+            const title = currentLang === "ur" ? s.ur : s.en;
+            const note = serviceNote(s);
+            const priceLine =
+              s.id === "cut" || s.id === "poor"
+                ? fmt(s.flat_fee || 26500)
+                : s.id === "alive"
+                  ? currentLang === "ur"
+                    ? "قیمت کلو / وزن کے مطابق"
+                    : "Price by kg you choose"
+                  : currentLang === "ur"
+                    ? "قیمت وزن کے مطابق"
+                    : "Price by kg you choose";
+            return `
+        <article class="service-card">
+          <span class="service-dates">${esc(s.available || "")}</span>
+          <h3>${esc(title)}</h3>
+          <div class="service-fee">${esc(priceLine)}</div>
+          <p class="service-note" lang="${currentLang === "ur" ? "ur" : "en"}" dir="${currentLang === "ur" ? "rtl" : "ltr"}">${serviceNoteHtml(note)}</p>
+          <button type="button" class="wa-btn" onclick="goToPurchase(null, '${esc(s.id)}')"><span>📱</span><span class="t" data-en="Order via Contact" data-ur="رابطہ سے آرڈر">Order via Contact</span></button>
+        </article>`;
+          })
+          .join("");
+        observeCards();
+        applyLang();
+      }
+
+      function renderContactPeople() {
+        const el = $("contactPeople");
+        if (!el) return;
+        const msg = purchaseWhatsAppText(pendingPurchase);
+        el.innerHTML = CONTACTS.map(
+          (c) => `
+        <div class="contact-person">
+          <h3 class="keep-en">${esc(c.name)}</h3>
+          <div class="wa-number keep-en" lang="en" dir="ltr">+91 ${esc(formatPhone(c.phone))}</div>
+          <div class="contact-actions">
+            <a class="contact-call" href="tel:+91${esc(c.phone)}"><span class="t" data-en="Call" data-ur="کال">Call</span></a>
+            <a class="cta-btn" href="${esc(waUrlFor(c.wa, msg))}" target="_blank" rel="noopener"><span>💬</span><span class="t" data-en="WhatsApp" data-ur="واٹس ایپ">WhatsApp</span></a>
+          </div>
+        </div>`,
+        ).join("");
+        const floatWa = $("floatWa");
+        if (floatWa) floatWa.href = waUrlFor(CONTACTS[0].wa, msg);
+      }
+
+
+      function goToPurchase(goatId, serviceId) {
+        const goat = goatId ? goats.find((g) => g.id === goatId) : null;
+        const sid = serviceId || "alive";
+        const service = services.find((s) => s.id === sid) || services[0];
+        if (!service) return;
+        pendingPurchase = { goat, service };
+        renderContactPeople();
+        scrollToId("contact");
+        const contact = $("contact");
+        if (contact) {
+          contact.style.transition = "box-shadow 0.4s ease";
+          contact.style.boxShadow = "0 0 0 4px rgba(245, 200, 78, 0.55)";
+          setTimeout(() => {
+            contact.style.boxShadow = "";
+          }, 1800);
+        }
+      }
+
+      function serviceIcon(id) {
+        return id === "cut" ? "🔪" : id === "poor" ? "🤲" : "🐐";
+      }
+
+      function openBooking(goatId) {
+        goToPurchase(goatId);
+      }
+
+      async function submitBooking() {
+        if (!pendingBooking) return;
+        clearMessage("bookingMsg");
+        const payload = {
+          goatId: pendingBooking.goat.id,
+          serviceId: pendingBooking.service.id,
+          customerName: $("customerName").value.trim(),
+          phone: $("customerPhone").value.trim(),
+          address: $("customerAddress").value.trim(),
+          notes: $("customerNotes").value.trim(),
+        };
+        try {
+          const data = await api("/api/orders", {
+            method: "POST",
+            body: JSON.stringify(payload),
+          });
+          const order = data.order;
+          const msg =
+            currentLang === "ur"
+              ? `آرڈر بن گیا: ${order.order_id}`
+              : `Order created: ${order.order_id}`;
+          showMessage("bookingMsg", "ok", `${msg}.`);
+          const link = waUrlFor(CONTACTS[0].wa, orderWhatsAppText(order));
+          $("bookingWaBtn").href = link;
+          $("bookingWaBtn").classList.remove("hidden");
+          $("bookingWaBtn").textContent =
+            currentLang === "ur"
+              ? "💬 واٹس ایپ پر آرڈر بھیجیں"
+              : "💬 Send Order on WhatsApp";
+          $("floatWa").href = link;
+          const popup = window.open(link, "_blank");
+          if (!popup) window.location.href = link;
+        } catch (err) {
+          showMessage("bookingMsg", "err", err.message);
+        }
+      }
+
+
+      function observeCards() {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(
+                  () => entry.target.classList.add("visible"),
+                  index * 60,
+                );
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        document
+          .querySelectorAll(".service-card")
+          .forEach((card) => obs.observe(card));
+      }
+
+      function toggleLang() {
+        currentLang = currentLang === "en" ? "ur" : "en";
+        document.body.classList.toggle("urdu", currentLang === "ur");
+        document.documentElement.dir = currentLang === "ur" ? "rtl" : "ltr";
+        $("langText").textContent = currentLang === "en" ? "اردو" : "English";
+        $("langIcon").textContent = currentLang === "en" ? "اُ" : "EN";
+        applyLang();
+        renderServices();
+        renderContactPeople();
+      }
+
+      function applyLang() {
+        document.querySelectorAll(".t").forEach((el) => {
+          if (el.classList.contains("keep-en")) return;
+          const txt = el.dataset[currentLang];
+          if (!txt) return;
+          let out = txt;
+          if (currentLang === "ur") {
+            out = out.replace(
+              /Munireddy Palya,\s*JC Nagar/g,
+              "Munireddy Palya,\nJC Nagar",
+            );
+          }
+          el.textContent = out;
+        });
+      }
+
+      function openModal(id) {
+        $(id).classList.add("show");
+      }
+
+      function closeModal(id) {
+        $(id).classList.remove("show");
+      }
+
+      async function openAdminLogin() {
+        try {
+          const session = await api("/api/admin/session");
+          if (session.authenticated) {
+            await openAdmin();
+            return;
+          }
+        } catch {}
+        clearMessage("loginMsg");
+        $("adminUser").value = "";
+        $("adminPass").value = "";
+        openModal("loginModal");
+      }
+
+      async function adminLogin() {
+        clearMessage("loginMsg");
+        try {
+          await api("/api/admin/login", {
+            method: "POST",
+            body: JSON.stringify({
+              username: $("adminUser").value.trim(),
+              password: $("adminPass").value,
+            }),
+          });
+          closeModal("loginModal");
+          await openAdmin();
+        } catch (err) {
+          showMessage("loginMsg", "err", err.message);
+        }
+      }
+
+      async function adminLogout() {
+        await api("/api/admin/logout", { method: "POST", body: "{}" }).catch(
+          () => {},
+        );
+        closeModal("adminModal");
+      }
+
+      async function openAdmin() {
+        openModal("adminModal");
+        await refreshAdmin();
+      }
+
+      async function refreshAdmin() {
+        await loadStorefront();
+        const data = await api("/api/admin/orders");
+        orders = data.orders || [];
+        orderStatuses = data.statuses || [];
+        renderAdminStats();
+        renderAdminInventory();
+        renderAdminOrders();
+        renderAdminBreeds();
+      }
+
+      function renderAdminStats() {
+        const total = goats.length;
+        const avg = total
+          ? Math.round(
+              goats.reduce((sum, g) => sum + Number(g.price || 0), 0) / total,
+            )
+          : 0;
+        const activeOrders = orders.filter(
+          (o) => !["Delivered", "Cancelled"].includes(o.status),
+        ).length;
+        const highest = total
+          ? Math.max(...goats.map((g) => Number(g.price || 0)))
+          : 0;
+        $("adminStats").innerHTML = `
+      <div class="stat-card"><strong>${total}</strong><span>Goats</span></div>
+      <div class="stat-card"><strong>${breeds.length}</strong><span>Breeds</span></div>
+      <div class="stat-card"><strong>${activeOrders}</strong><span>Active Orders</span></div>
+      <div class="stat-card"><strong>${fmt(avg)}</strong><span>Avg Price</span></div>
+      <div class="stat-card"><strong>${fmt(highest)}</strong><span>Highest</span></div>`;
+      }
+
+      function renderAdminInventory() {
+        $("adminInventory").innerHTML =
+          goats
+            .map(
+              (g) => `
+      <article class="admin-goat" data-admin-goat="${g.id}">
+        <img src="${esc(g.img || fallbackImg)}" onerror="this.src='${fallbackImg}'" alt="${esc(g.name_en)}">
+        <div>
+          <strong>${esc(g.name_en)}</strong>
+          <div class="muted">${esc(g.breed)} • ${esc(g.weight)}</div>
+          <div class="inline-grid">
+            <div class="field">
+              <label>Price</label>
+              <input type="number" inputmode="numeric" id="price-${g.id}" value="${esc(g.price)}">
+            </div>
+            <div class="field">
+              <label>Image URL</label>
+              <input id="img-${g.id}" value="${esc(g.img || "")}">
+            </div>
+          </div>
+          <div class="upload-row">
+            <div class="field">
+              <label>Replace Image from Gallery</label>
+              <input class="file-input" type="file" id="file-${g.id}" accept="image/*">
+            </div>
+            <button class="secondary-btn" onclick="replaceGoatImage(${g.id})">🖼 Upload</button>
+          </div>
+          <div class="inline-grid">
+            <div class="field">
+              <label>Badge</label>
+              <input id="badge-${g.id}" value="${esc(g.badge || "")}">
+            </div>
+            <div class="field">
+              <label>Breed</label>
+              <select id="breed-${g.id}">
+                ${breeds.map((b) => `<option value="${esc(b)}" ${b === g.breed ? "selected" : ""}>${esc(b)}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+          <div class="admin-actions">
+            <button class="submit-btn" onclick="saveGoat(${g.id})">💾 Save</button>
+            <button class="danger-btn" onclick="deleteGoat(${g.id})">🗑 Delete</button>
+          </div>
+        </div>
+      </article>`,
+            )
+            .join("") || `<div class="empty-state">No goats available.</div>`;
+      }
+
+      function renderAdminBreeds() {
+        const usage = goats.reduce((acc, goat) => {
+          acc[goat.breed] = (acc[goat.breed] || 0) + 1;
+          return acc;
+        }, {});
+        $("adminBreeds").innerHTML =
+          breeds
+            .map(
+              (b) => `
+      <div class="breed-row">
+        <div>
+          <strong>${esc(b)}</strong>
+          <div class="muted">${usage[b] || 0} goats</div>
+        </div>
+        <button class="danger-btn" onclick="deleteBreed(${jsArg(b)})" ${usage[b] ? "disabled title='Move goats before deleting this breed'" : ""}>Delete</button>
+      </div>`,
+            )
+            .join("") || `<div class="empty-state">No breeds yet.</div>`;
+        renderBreedOptions();
+      }
+
+      function renderAdminOrders() {
+        $("adminOrders").innerHTML =
+          orders
+            .map(
+              (o) => `
+      <article class="admin-order">
+        <div class="admin-order-head">
+          <div>
+            <strong>${esc(o.order_id)}</strong>
+            <div class="muted">${esc(o.customer_name)} • ${esc(o.phone)}</div>
+            <div>${esc(o.goat_name)} • ${fmt(o.total_price)}</div>
+          </div>
+          <span class="status-pill">${esc(o.status)}</span>
+        </div>
+        <div class="inline-grid">
+          <div class="field">
+            <label>Status</label>
+            <select id="status-${esc(o.order_id)}">
+              ${orderStatuses.map((s) => `<option value="${esc(s)}" ${s === o.status ? "selected" : ""}>${esc(s)}</option>`).join("")}
+            </select>
+          </div>
+          <div class="field">
+            <label>Update Note</label>
+            <input id="note-${esc(o.order_id)}" placeholder="Optional note for tracking timeline">
+          </div>
+        </div>
+        <div class="admin-actions">
+          <button class="submit-btn" onclick="saveOrderStatus('${esc(o.order_id)}')">📦 Update Status</button>
+        </div>
+      </article>`,
+            )
+            .join("") || `<div class="empty-state">No orders yet.</div>`;
+      }
+
+      function switchAdminTab(tab) {
+        ["inventory", "orders", "breeds", "add"].forEach((name) => {
+          $(`tab-${name}`).classList.toggle("active", name === tab);
+          $(`admin-${name}`).classList.toggle("hidden", name !== tab);
+        });
+      }
+
+      async function saveGoat(id) {
+        try {
+          const uploadedUrl = await uploadImage("file-" + id);
+          if (uploadedUrl) $("img-" + id).value = uploadedUrl;
+          await api(`/api/admin/goats/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              price: $("price-" + id).value,
+              img: $("img-" + id).value.trim(),
+              badge: $("badge-" + id).value.trim(),
+              breed: $("breed-" + id).value.trim(),
+            }),
+          });
+          await refreshAdmin();
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+
+      async function replaceGoatImage(id) {
+        try {
+          const uploadedUrl = await uploadImage("file-" + id);
+          if (!uploadedUrl) {
+            alert("Choose an image from gallery first.");
+            return;
+          }
+          $("img-" + id).value = uploadedUrl;
+          await saveGoat(id);
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+
+      async function deleteGoat(id) {
+        if (!confirm("Delete this goat from inventory?")) return;
+        try {
+          await api(`/api/admin/goats/${id}`, { method: "DELETE" });
+          await refreshAdmin();
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+
+      async function addGoat() {
+        clearMessage("addMsg");
+        let uploadedUrl = "";
+        try {
+          uploadedUrl = await uploadImage("newImageFile");
+        } catch (err) {
+          showMessage("addMsg", "err", err.message);
+          return;
+        }
+        const payload = {
+          name_en: $("newName").value.trim(),
+          name_ur: $("newNameUr").value.trim(),
+          breed: $("newBreed").value.trim(),
+          price: $("newPrice").value,
+          weight: $("newWeight").value.trim(),
+          img: uploadedUrl || $("newImg").value.trim(),
+          badge: $("newBadge").value.trim(),
+        };
+        try {
+          await api("/api/admin/goats", {
+            method: "POST",
+            body: JSON.stringify(payload),
+          });
+          [
+            "newName",
+            "newNameUr",
+            "newPrice",
+            "newWeight",
+            "newImg",
+            "newBadge",
+          ].forEach((id) => ($(id).value = ""));
+          $("newImageFile").value = "";
+          showMessage("addMsg", "ok", "Goat added.");
+          await refreshAdmin();
+          switchAdminTab("inventory");
+        } catch (err) {
+          showMessage("addMsg", "err", err.message);
+        }
+      }
+
+      async function addBreed() {
+        clearMessage("breedMsg");
+        try {
+          await api("/api/admin/breeds", {
+            method: "POST",
+            body: JSON.stringify({ breed: $("newBreedName").value.trim() }),
+          });
+          $("newBreedName").value = "";
+          showMessage("breedMsg", "ok", "Breed added.");
+          await refreshAdmin();
+          switchAdminTab("breeds");
+        } catch (err) {
+          showMessage("breedMsg", "err", err.message);
+        }
+      }
+
+      async function deleteBreed(breed) {
+        if (!confirm(`Delete breed "${breed}"?`)) return;
+        clearMessage("breedMsg");
+        try {
+          await api(`/api/admin/breeds/${encodeURIComponent(breed)}`, {
+            method: "DELETE",
+          });
+          showMessage("breedMsg", "ok", "Breed deleted.");
+          await refreshAdmin();
+          switchAdminTab("breeds");
+        } catch (err) {
+          showMessage("breedMsg", "err", err.message);
+        }
+      }
+
+      async function saveOrderStatus(orderId) {
+        try {
+          await api(`/api/admin/orders/${encodeURIComponent(orderId)}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              status: $("status-" + orderId).value,
+              note: $("note-" + orderId).value.trim(),
+            }),
+          });
+          await refreshAdmin();
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+
+      document.querySelectorAll(".modal").forEach((modal) => {
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) modal.classList.remove("show");
+        });
+      });
+
+      renderContactPeople();
+      applyLang();
+      loadStorefront();
+    </script>
+  </body>
+</html>
